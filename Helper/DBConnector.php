@@ -2,6 +2,8 @@
 
 namespace CRUD\Helper;
 
+use mysqli;
+
 class DBConnector
 {
 

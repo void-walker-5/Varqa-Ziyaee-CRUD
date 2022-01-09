@@ -10,14 +10,14 @@ class PersonHelper
 
         $sql = "INSERT INTO MyGuests (id,firstname, lastname, username)
         VALUES ($Person->getId(), $Person->getFirstName(), $Person->getLastName(), $Person->getUsername()))";
-        $db = new DBConnector();
+        $db = new DBConnector("serverName", "userName", "passWord", "dbName");
         $db->connect();
         $this->db->execQuery($sql);
     }
 
     public function fetch(int $id)
     {
-        $db = new DBConnector();
+        $db = new DBConnector("serverName", "userName", "passWord", "dbName");
         $db->connect();
         $res = $this->db->execQuery("SELECT * FROM Persons WHERE id = $id");
         if ($res->num_rows > 0) {
@@ -32,7 +32,7 @@ class PersonHelper
 
     public function fetchAll()
     {
-        $db = new DBConnector();
+        $db = new DBConnector("serverName", "userName", "passWord", "dbName");
         $db->connect();
         $res = $this->db->execQuery("SELECT * FROM Persons");
         if ($res->num_rows > 0) {
@@ -51,7 +51,7 @@ class PersonHelper
         $sql = "UPDATE MyGuests SET (id,firstname, lastname, username)
         VALUES ($Person->getId(), $Person->getFirstName(), $Person->getLastName(), $Person->getUsername()))
         WHERE id = $Person->getId()";
-        $db = new DBConnector();
+        $db = new DBConnector("serverName", "userName", "passWord", "dbName");
         $db->connect();
         $this->db->execQuery($sql);
     }
@@ -60,7 +60,7 @@ class PersonHelper
     {
 
         $sql = "DELETE FROM MyGuests WHERE id = $id";
-        $db = new DBConnector();
+        $db = new DBConnector("serverName", "userName", "passWord", "dbName");
         $db->connect();
         $this->db->execQuery($sql);
     }
